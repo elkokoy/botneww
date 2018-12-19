@@ -1308,7 +1308,7 @@ client.on("message", message => {
 		if( !args[0] ) return message.reply( '**:x: Mention User**' );
 		if( !args[1] ) return message.reply( '**:x: Write Name Of Role To Remove it From The User**' );
 		var role = msg.split(' ').slice(2).join(" ").toLowerCase(); 
-		var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>_1 ).first(); 
+		var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>-1 ).first(); 
 		if( !role1 ) return message.reply( '**:x: Mention Role To Remove it From The User**' );if( message.mentions.members.first() ){
 			message.mentions.members.first().removeRole( role1 );
 			return message.reply('**:white_check_mark: Success Removed Role [ '+role1.name+' ] From [ '+args[0]+' ]**');
@@ -1327,7 +1327,7 @@ client.on("message", message => {
 		if( !args[0] ) return message.reply( '**:x: Mention User**' );
 		if( !args[1] ) return message.reply( '**:x: Write Name Of Role To Give It To User**' );
 		var role = msg.split(' ').slice(2).join(" ").toLowerCase(); 
-		var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>_1 ).first(); 
+		var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>-1 ).first(); 
 		if( !role1 ) return message.reply( '**:x: Write Name Of Role To Give It To User**' );if( message.mentions.members.first() ){
 			message.mentions.members.first().addRole( role1 );
 			return message.reply('**:white_check_mark:Success Gived Rank [ '+role1.name+' ] To [ '+args[0]+' ]**');
