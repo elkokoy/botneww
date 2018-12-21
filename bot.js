@@ -2110,6 +2110,34 @@ client.on("message", message => {
      });
     }
 });
+});
+client.on("ready", () => { // كود رينبو
+  function lol() {
+    client.guilds.get('518933084792684544').roles.find("name", "ℊℯℯ𝖪").setColor("RANDOM");
+  };
+  setInterval(lol, 1000);
+});
+client.on("ready", () => {
+
+    var guild;
+
+    while (!guild)
+
+        guild = client.guilds.get("518933084792684544");
+
+    guild.fetchInvites().then((data) => {
+
+        data.forEach((Invite, key, map) => {
+
+            var Inv = Invite.code;
+
+            dat[Inv] = Invite.uses;
+
+        });
+
+    });
+
+});
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
