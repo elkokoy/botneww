@@ -2150,7 +2150,7 @@ client.on("message", message => {
 });
 client.on("ready", () => { // كود رينبو
   function lol() {
-    client.guilds.get('518933084792684544').roles.find("name", "ℊℯℯ𝖪").setColor("RANDOM");
+    client.guilds.get('518933084792684544').roles.find("name", "{}").setColor("RANDOM");
   };
   setInterval(lol, 1000);
 });
