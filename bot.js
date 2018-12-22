@@ -2193,7 +2193,6 @@ client.on('ready', function(){
         i = i+j;
         client.user.setGame(setGame[i],`http://www.twitch.tv/niijaxo`);
     }, ms);100000
-	});
 });
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
