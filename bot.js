@@ -2175,19 +2175,44 @@ client.on("ready", () => {
     });
 
 });
-client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', 'welcome');/////By Mahmoud-QuaStyle
-    let memberavatar = member.user.avatarURL
-        if (!channel) return;//////Mal Codes
-        let embed = new Discord.RichEmbed()
-        .setColor('#FF000')////BY:Mal Team 
-        .setThumbnail(memberavatar)
-        .addField('✘ | Name: ', `${member}`)
-        .addField('✘ | Welcome !', `Welcome ${member}`)
-        .setTimestamp()
+ client.on('message', async message => {
+  if(message.content.startsWith(prefix + "طلب")) {
+    await message.channel.send("**اسمك**").then(e => {/////Mal Team  
+    let filter = m => m.author.id === message.author.id
+    let lan = '';
+    let md = '';
+    let br = '';
+    let chaLan = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+    .then(collected => {
+      lan = collected.first().content
+      collected.first().delete()
+e.delete();/////Mal Team  By: @- Mál ,ϻά𝔥𝔪𝔬𝔲𝓓-QuaStyle≽ܫ≼#5661 
+     message.channel.send('**كم تقدر تدفع**').then(m => {
+let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+.then(co => {/////Mal Team  By: @- Mál ,ϻά𝔥𝔪𝔬𝔲𝓓-QuaStyle≽ܫ≼#5661 
+  md = co.first().content
+        co.first().delete()
+        m.delete();
+message.channel.send('**نوع الطلب **').then(ms => {
+let br = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+.then(col => {
+  br = col.first().content
+        col.first().delete()
 
-        channel.sendEmbed(embed);
-});
+ms.delete()/////Mal Team  
+
+ message.channel.send('جاري التقديم ..').then(b => {
+        setTimeout(() => {
+  b.edit(`**تم التقديم وسيتم الرد فـ اقرب وقت**`)
+        },5000);
+var gg = message.guild.channels.find('name', 'request')
+if(!gg) return;
+if(gg) {////Mal Team  By: - Mál ,ϻά𝔥𝔪𝔬𝔲𝓓-QuaStyle≽ܫ≼#5661 
+gg.send({embed : new Discord.RichEmbed()
+.setDescription(`**  اسمك :question:  : \n ${lan}\nكم تقدر تدفع :link: :\n ${md} \n طلبك :question: :\n ${br}  \nتم التقديم بواسطة  : <@${message.author.id}> **`)  
+          .setFooter(`Mal Team`)/////Mal Team  By: @- Mál ,ϻά𝔥𝔪𝔬𝔲𝓓-QuaStyle≽ܫ≼#5661 
+.setTimestamp()/////Mal Team  By: @- Mál ,ϻά𝔥𝔪𝔬𝔲𝓓-QuaStyle≽ܫ≼#5661 
+});///////////////////////////MaL Team By: @- Mál ,ϻά𝔥𝔪𝔬𝔲𝓓-QuaStyle≽ܫ≼#5661 
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
