@@ -2175,6 +2175,19 @@ client.on("ready", () => {
     });
 
 });
+client.on('guildMemberAdd', member => {
+    let channel = member.guild.channels.find('name', 'welcome');/////By Mahmoud-QuaStyle
+    let memberavatar = member.user.avatarURL
+        if (!channel) return;//////Mal Codes
+        let embed = new Discord.RichEmbed()
+        .setColor('#FF000')////BY:Mal Team 
+        .setThumbnail(memberavatar)
+        .addField('✘ | Name: ', `${member}`)
+        .addField('✘ | Welcome !', `Welcome ${member}`)
+        .setTimestamp()
+
+        channel.sendEmbed(embed);
+});
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
