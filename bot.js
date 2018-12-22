@@ -2233,5 +2233,21 @@ client.on("message", (message) => {
                             client.users.get("351366504068939777").send(yumz)
                         }
             });
+client.on('ready', function(){
+    var ms = 10000 ;
+    var setGame = [`♥ℊℯℯ𝖪𝒴 Server♥ `,` _help `];
+    var i = -1;
+    var j = 0;
+    setInterval(function (){
+        if( i == -1 ){
+            j = 1;
+        }
+        if( i == (setGame.length)-1 ){
+            j = -1;
+        }
+        i = i+j;
+        client.user.setGame(setGame[i],`http://www.twitch.tv/حبي احبك في الله`);
+    }, ms);10000
+	});
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
