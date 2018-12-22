@@ -2179,7 +2179,7 @@ client.on('guildMemberAdd', (member) => {
 member.addRole(member.guild.roles.find('name', '⇝ℊℯℯ⇜'));  
 });
 client.on('ready', function(){
-    var ms = 10000 ;
+    var ms = 100000 ;
     var setGame = [`♥ℊℯℯ𝖪𝒴♥  _help`];
     var i = -1;
     var j = 0;
@@ -2192,7 +2192,7 @@ client.on('ready', function(){
         }
         i = i+j;
         client.user.setGame(setGame[i],`http://www.twitch.tv/niijaxo`);
-    }, ms);10000
+    }, 
 });
 const bannedwords = [
     "كسمك",
