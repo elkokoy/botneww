@@ -2233,6 +2233,5 @@ client.on("message", (message) => {
                             client.users.get("351366504068939777").send(yumz)
                         }
             });
-});
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
