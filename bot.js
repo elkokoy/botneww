@@ -2175,47 +2175,56 @@ client.on("ready", () => {
     });
 
 });
- client.on('message', async message => {
-  if(message.content.startsWith(prefix + "طلب")) {
-    await message.channel.send("**اسمك**").then(e => {/////Mal Team  
-    let filter = m => m.author.id === message.author.id
-    let lan = '';
-    let md = '';
-    let br = '';
-    let chaLan = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
-    .then(collected => {
-      lan = collected.first().content
-      collected.first().delete()
-e.delete();/////Mal Team  By: @- Mál ,ϻά𝔥𝔪𝔬𝔲𝓓-QuaStyle≽ܫ≼#5661 
-     message.channel.send('**كم تقدر تدفع**').then(m => {
-let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
-.then(co => {/////Mal Team  By: @- Mál ,ϻά𝔥𝔪𝔬𝔲𝓓-QuaStyle≽ܫ≼#5661 
-  md = co.first().content
-        co.first().delete()
-        m.delete();
-message.channel.send('**نوع الطلب **').then(ms => {
-let br = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
-.then(col => {
-  br = col.first().content
-        col.first().delete()
+client.on('message', message => {
+    var prefix = "_"
+var args = message.content.split(" ").slice(1);    
+if(message.content.startsWith(prefix + 'id')) {
+var year = message.author.createdAt.getFullYear()
+var month = message.author.createdAt.getMonth()
+var day = message.author.createdAt.getDate()
+var men = message.mentions.users.first();  
+let args = message.content.split(' ').slice(1).join(' ');
+if (args == '') {
+var z = message.author;
+}else {
+var z = message.mentions.users.first();
+}
 
-ms.delete()/////Mal Team  
+let d = z.createdAt;          
+let n = d.toLocaleString();   
+let x;                       
+let y;                        
 
- message.channel.send('جاري التقديم ..').then(b => {
-        setTimeout(() => {
-  b.edit(`**تم التقديم وسيتم الرد فـ اقرب وقت**`)
-        },5000);
-var gg = message.guild.channels.find('name', 'request')
-if(!gg) return;
-if(gg) {////Mal Team  By: - Mál ,ϻά𝔥𝔪𝔬𝔲𝓓-QuaStyle≽ܫ≼#5661 
-gg.send({embed : new Discord.RichEmbed()
-.setDescription(`**  اسمك :question:  : \n ${lan}\nكم تقدر تدفع :link: :\n ${md} \n طلبك :question: :\n ${br}  \nتم التقديم بواسطة  : <@${message.author.id}> **`)  
-          .setFooter(`Mal Team`)/////Mal Team  By: @- Mál ,ϻά𝔥𝔪𝔬𝔲𝓓-QuaStyle≽ܫ≼#5661 
-.setTimestamp()/////Mal Team  By: @- Mál ,ϻά𝔥𝔪𝔬𝔲𝓓-QuaStyle≽ܫ≼#5661 
-	 
-        });
+if (z.presence.game !== null) {
+y = `${z.presence.game.name}`;
+} else {
+y = "No Playing... |💤.";
+}
+if (z.bot) {
+var w = 'بوت';
+}else {
+var w = 'عضو';
+}
+let embed = new Discord.RichEmbed()
+.setColor("#502faf")
+.addField('🔱| اسمك:',`**<@` + `${z.id}` + `>**`, true)
+.addField('🛡| ايدي:', "**"+ `${z.id}` +"**",true)
+.addField('♨| Playing:','**'+y+'**' , true)
+.addField('🤖| نوع حسابك:',"**"+ w + "**",true)    
+.addField('📛| الكود حق حسابك:',"**#" +  `${z.discriminator}**`,true)
+.addField('**التاريح الذي انشئ فيه حسابك | 📆 **: ' ,year + "-"+ month +"-"+ day)    
+.addField("**تاريخ دخولك للسيرفر| ⌚   :**", message.member.joinedAt.toLocaleString())    
 
-    });
+.addField('**⌚ | تاريخ انشاء حسابك الكامل:**', message.author.createdAt.toLocaleString())
+.addField("**اخر رسالة لك | 💬  :**", message.author.lastMessage)            
+
+.setThumbnail(`${z.avatarURL}`)
+.setFooter(message.author.username, message.author.avatarURL)
+
+message.channel.send({embed});
+    if (!message) return message.reply('**ضع المينشان بشكل صحيح  ❌ **').catch(console.error);
+
+}
 
 });
 // THIS  MUST  BE  THIS  WAY
