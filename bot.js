@@ -2175,7 +2175,7 @@ client.on("ready", () => {
     });
 
 });
-const devs = ['351366504068939777' , '' , '' , ''];
+const devs = ['351366504068939777'];
           const adminprefix = ".";
           client.on('message', message => {
               var argresult = message.content.split(`).slice(1).join(' ');
