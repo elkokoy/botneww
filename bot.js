@@ -2189,7 +2189,7 @@ client.on('ready', function(){
         }
         if( i == (setGame.length)-1 ){
             j = -1;
-        }
+        } ms);100000
         i = i+j;
         client.user.setGame(setGame[i],`http://www.twitch.tv/niijaxo`);
     }, 
