@@ -2194,5 +2194,21 @@ client.on('ready', function(){
         client.user.setGame(setGame[i],`http://www.twitch.tv/niijaxo`);
     }, ms);100000
 });
+const bannedwords = [
+    "كسمك",
+    "يابن المتناكه",
+    "يلعن دين امك",
+    "كسمين امك",
+    "يابن العرص",
+    "دين امك"
+
+  ];
+
+client.on('message',  message => {
+  if(bannedwords.some(word => message.content.includes(word))) {
+    message.delete()
+    message.reply(" احترم نفسك , يمنج الشتايم تمامنا هنا  ").then(msg => {msg.delete(5000)});;
+  };
+});
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
