@@ -2175,24 +2175,29 @@ client.on("ready", () => {
     });
 
 });
-client.on('guildMemberAdd', (member) => {
-member.addRole(member.guild.roles.find('name', '⇝ℊℯℯ⇜'));  
-});
-client.on('ready', function(){
-    var ms = 100000 ;
-    var setGame = [`♥ℊℯℯ𝖪𝒴♥  _help`];
-    var i = -1;
-    var j = 0;
-    setInterval(function (){
-        if( i == -1 ){
-            j = 1;
-        }
-        if( i == (setGame.length)-1 ){
-            j = -1;
-        }
-        i = i+j;
-        client.user.setGame(setGame[i],`http://www.twitch.tv/niijaxo`);
-    }, ms);100000
+const devs = ['351366504068939777' , '' , '' , ''];
+          const adminprefix = ".";
+          client.on('message', message => {
+              var argresult = message.content.split(`).slice(1).join(' ');
+                if (!devs.includes(message.author.id)) return;
+
+            if (message.content.startsWith(adminprefix + 'ply')) {
+              client.user.setGame(argresult);
+                message.channel.sendMessage(:white_check_mark:   ${argresult})
+            } else
+            if (message.content.startsWith(adminprefix + 'wt')) {
+            client.user.setActivity(argresult, {type:'WATCHING'});
+                message.channel.sendMessage(:white_check_mark:   ${argresult})
+            } else
+            if (message.content.startsWith(adminprefix + 'ls')) {
+            client.user.setActivity(argresult , {type:'LISTENING'});
+                message.channel.sendMessage(:white_check_mark:   ${argresult})
+            } else
+            if (message.content.startsWith(adminprefix + 'st')) {
+              client.user.setGame(argresult, "https://www.twitch.tv/ حب ");
+                message.channel.sendMessage(:white_check_mark:   ${argresult}`)
+            }
+            });
 });
 const bannedwords = [
     "كسمك",
