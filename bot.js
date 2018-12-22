@@ -2180,7 +2180,7 @@ member.addRole(member.guild.roles.find('name', '⇝ℊℯℯ⇜'));
 });
 client.on('ready', function(){
     var ms = 100000 ;
-    var setGame = [`iSryBot BETA : V2 `,`&help - &inv`];
+    var setGame = [`♥ℊℯℯ𝖪𝒴 Server♥ _help`];
     var i = -1;
     var j = 0;
     setInterval(function (){
