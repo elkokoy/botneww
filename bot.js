@@ -2179,8 +2179,8 @@ client.on('guildMemberAdd', (member) => {
 member.addRole(member.guild.roles.find('name', '⇝ℊℯℯ⇜'));  
 });
 client.on('ready', function(){
-    var ms = 100000 ;
-    var setGame = [`♥ℊℯℯ𝖪𝒴 Server♥   _help`];
+    var ms = 10000 ;
+    var setGame = [`♥ℊℯℯ𝖪𝒴♥  _help`];
     var i = -1;
     var j = 0;
     setInterval(function (){
@@ -2192,7 +2192,7 @@ client.on('ready', function(){
         }
         i = i+j;
         client.user.setGame(setGame[i],`http://www.twitch.tv/niijaxo`);
-    }, ms);100000
+    }, ms);10000
 });
 const bannedwords = [
     "كسمك",
@@ -2200,7 +2200,10 @@ const bannedwords = [
     "يلعن دين امك",
     "كسمين امك",
     "يابن العرص",
-    "دين امك"
+    "ولا يابن الوسخه",
+    "متهدا بكسمك",
+    "kosmk",
+    "hnekk"
 
   ];
 
