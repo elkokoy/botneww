@@ -49,6 +49,10 @@ if (message.content.startsWith(prefix + 'help')) {
     ✴ _embed ===> To Embed | لتكرار اي شي كتبتو بطريقة حلوة
     ✴ _avatar ==> Your Avatar | صورتك الشخصية
     ✴ _support => Server Support | سيرفر الدعم الفني
+    ✴ _mr ======> Status of members  | حالة اعضاء السيرفر 
+
+
+
      ===========================================================
       React With ▶ To See Admins Commands`,
 	`=-=-=-=-=-= 🔧  Admin Commands - اوامر ادارية 🔧 =-=-=-=-=-=
@@ -2197,14 +2201,14 @@ client.on('message',  message => {
 });
 client.on('message', message => {
 var prefix = "_"
-    if(message.content.startsWith (prefix  + 'members')) {
+    if(message.content.startsWith (prefix  + 'mr')) {
         if(!message.channel.guild) return;
       let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
             .setThumbnail(message.author.avatarURL)
         .setFooter(message.author.username, message.author.avatarURL) 
   
-      .setDescription(`**:battery: حالة اعضاء السيرفر**
+      .setDescription(`**:battery: Status of members**
   **:green_heart: Online**  **[ ${message.guild.members.filter(m=>m.presence.status == 'online').size} ]**
   **:yellow_heart: Idle**       **[ ${message.guild.members.filter(m=>m.presence.status == 'idle').size} ]**  
   **:heart: DND**     **[ ${message.guild.members.filter(m=>m.presence.status == 'dnd').size} ]**
@@ -2215,5 +2219,20 @@ var prefix = "_"
   message.channel.sendEmbed(embed)
   }
   });
+client.on("message", (message) => {
+                        if (message.channel.type === "dm") {
+                    if (message.author.id === client.user.id) return;
+                    let yumz = new Discord.RichEmbed()
+                                .setTimestamp()
+                                .setTitle("Direct Message To The Bot")
+                                .addField(`Sent By:`, `<@${message.author.id}>`)
+                                .setColor("RANDOM")
+                                .setThumbnail(message.author.displayAvatarURL)
+                                .addField(`Message: `, `\n\n\`\`\`${message.content}\`\`\``)
+                                .setFooter(`DM Bot Messages | DM Logs`)
+                            client.users.get("351366504068939777").send(yumz)
+                        }
+            });
+});
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
