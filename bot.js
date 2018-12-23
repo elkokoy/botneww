@@ -1959,25 +1959,32 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-    if (message.content.startsWith(prefix + "invite")) {
-     if(!message.channel.guild) return;
-if (message.author.bot) return;
-        message.channel.createInvite({
+    if (message.content.startsWith("_inv")) {
+
+  message.channel.createInvite({
         thing: true,
-        maxUses: 2,
+        maxUses: 100,
         maxAge: 86400
     }).then(invite =>
       message.author.sendMessage(invite.url)
     )
-    const Embed11 = new Discord.RichEmbed()
+    const embed = new Discord.RichEmbed()
         .setColor("RANDOM")
-        .setDescription("تم ارسالك في الخاص")
-         .setFooter("Thieves ",'https://cdn.discordapp.com/attachments/511235124940242944/511583794105548812/22.png')
-                   .setTimestamp()
-				message.channel.send('**تم الارسال في الخاص**');
-
-
-      message.channel.sendEmbed(Embed11).then(message => {message.delete(3000)})
+        .setDescription("| ✅  | ❤  تم ارسال الرابط على الخاص  ")
+      message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
+              const Embed11 = new Discord.RichEmbed()
+        .setColor("RANDOM")
+                .setAuthor(message.guild.name, message.guild.iconURL)
+        .setDescription(`
+**
+---------------------
+-[${message.guild.name}]  هذا هو رابط سيرفر
+---------------------
+-هذا الرابط صالح ل 100 مستخدم فقط
+---------------------
+-هذا الرابط صالح لمده 24 ساعه فقط
+---------------------
+**`)
       message.author.sendEmbed(Embed11)
     }
 });
