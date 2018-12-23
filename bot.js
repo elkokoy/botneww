@@ -51,8 +51,6 @@ if (message.content.startsWith(prefix + 'help')) {
     ✴ _support => Server Support | سيرفر الدعم الفني
     ✴ _mr ======> Status of members  | حالة اعضاء السيرفر 
 
-
-
      ===========================================================
       React With ▶ To See Admins Commands`,
 	`=-=-=-=-=-= 🔧  Admin Commands - اوامر ادارية 🔧 =-=-=-=-=-=
@@ -64,8 +62,8 @@ if (message.content.startsWith(prefix + 'help')) {
     ❖ _role all <rank> => Give All Rank | لأعطاء رتبة للجميع
     ❖ _role humans <rank> => Give Humans Rank | لأعطاء رتبة للاشخاص فقط
     ❖ _role bots <rank> => Give Bots Rank | لأعطاء رتبة لجميع البوتات
-    ❖ _hchannel => Hide Channel | اخفاء الشات
-    ❖ _schannel => Show The Hidden Channel | اضهار الشات المخفية
+    ❖ _hc => Hide Channel | اخفاء الشات
+    ❖ _sc => Show The Hidden Channel | اضهار الشات المخفية
     ❖ _clr <numbr> => Clear Chat With Number | مسح الشات بعدد
     ❖ _clear => Clear Chat | مسح الشات
     ❖ _mute @user <reason> => Mute User | اعطاء العضو ميوت لازم رتبة <Muted>
@@ -74,11 +72,15 @@ if (message.content.startsWith(prefix + 'help')) {
     ❖ _ban @user <reason> => Ban User From Server | حضر الشخص من السيرفر
     ❖ _mutechannel => Mute Channel | تقفيل الشات
     ❖ _unmutechannel => Unmute Channel | فتح الشات
-    ❖ _dc => Delete All Rooms |  مسح كل الرومات
-    ❖ _dr => Delete All Rank <مسح كل الرانكات <لازم تكون رانك البوت فوق كل الرانكات
+    ❖ _vc => Create an voice channel | انشاء روم صوتي
+    ❖ _tc => Create an text channel |  انشاء روم كتابي
+    ❖ _delet => delete room voice & text |  لحذف الروم الصوتي او الكتابي
+    ❖ _cto => Words to put in the toppick |  كلام لوضعه في التوبيك
     ❖ _ccolors <number> => Create Colors | ينشا لك الوان مع كم الوان تبي
     ❖ _kv @user => Voice Kick | يطرد شخص من الرووم
     ❖ _vonline => Create Channel Voice Online | يسوي رووم فويس اونلاين
+    ❖ _send => Send a message to member |  ارسال رساله لشخص
+
      ===========================================================
      ✴ Create Channel **welcome** To Enable The Welcome 
      ✴ Create Channel **suggestion** To Enable Command _sug
@@ -1426,7 +1428,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
 var prefix = "_";
-      if(message.content === prefix + "hchannel") {
+      if(message.content === prefix + "hc") {
       if(!message.channel.guild) return;
       if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You Dont Have Perms :x:');
              message.channel.overwritePermissions(message.guild.id, {
@@ -1439,7 +1441,7 @@ var prefix = "_";
 
 client.on('message', message => {
 var prefix = "_";
-      if(message.content === prefix + "schannel") {
+      if(message.content === prefix + "sc") {
       if(!message.channel.guild) return;
       if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(':x:');
              message.channel.overwritePermissions(message.guild.id, {
@@ -2029,26 +2031,7 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);
     }
 });
-client.on('message', omar => {
-var prefix = "_";
-if(omar.content.split(' ')[0] == prefix + 'dc') {  // delete all channels
-if (!omar.channel.guild) return;
-if(!omar.guild.member(omar.author).hasPermission("MANAGE_CHANNELS")) return omar.reply("**You Don't Have ` MANAGE_CHANNELS ` Permission**");
-if(!omar.guild.member(client.user).hasPermission("MANAGE_CHANNELS")) return omar.reply("**I Don't Have ` MANAGE_CHANNELS ` Permission**");
-omar.guild.channels.forEach(m => {
-m.delete();
-});// omar jedol / Codes
-}// omar jedol / Codes
-if(omar.content.split(' ')[0] == prefix + 'dr') { // delete all roles
-if (!omar.channel.guild) return;
-if(!omar.guild.member(omar.author).hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) return omar.reply("**You Don't Have ` MANAGE_ROLES_OR_PERMISSIONS ` Permission**");
-if(!omar.guild.member(client.user).hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) return omar.reply("**I Don't Have ` MANAGE_ROLES_OR_PERMISSIONS ` Permission**");
-omar.guild.roles.forEach(m => {
-m.delete();
-});// omar jedol / Codes
-omar.reply("✅ `Success Deleted All Roles _ Ranks`")
-}// omar jedol / Codes
-});
+
 
 client.on('message', message => {
 	var prefix = "_";
@@ -2249,5 +2232,148 @@ client.on('ready', function(){
         client.user.setGame(setGame[i],`http://www.twitch.tv/حبي احبك في الله`);
     }, ms);10000
 	});
+
+client.on('message', message => {
+    var p = "_";
+            if (message.content.startsWith(p + "cto")) {
+                if(!message.channel.guild) return;
+                if (!message.member.hasPermission("MANAGE_CHANNEL"))  return;
+      var a= message.content.split(' ').slice(1).join("  ");
+      if (!a) return message.reply("اكتب كلام لوضعه في التوبيك!")
+      message.channel.setTopic(`${a}`)
+      .then(newChannel => message.channel.send(`تم تغيير التوبيك لـ **${a}**`))
+      .catch(console.error);
+            }
+        });
+
+client.on('message', msg => {
+ if (msg.content.startsWith('_send')) {
+      let args = msg.content.split(' ').slice(1)
+      if (!args[0]) return msg.reply(`**منشن الشخص اولا**`)
+      if (!args[1]) return msg.reply(`**ما هي الرساله المطلوب ارسالها**`)
+      let alpha = msg.mentions.members.first()
+      if (!alpha) return msg.reply(`**يجب تحديد الشخص**`)
+      let alphaEmbed = new Discord.RichEmbed()
+      .setTitle(`**رسالة جديده لك من شخص ما**`)
+      .setDescription(args.join(" "))
+
+      client.users.get(`${alpha.id}`).send(alphaEmbed)
+      msg.reply(`**تم ارسال الرساله**`)
+    }
+});
+
+
+
+       client.on("message", (message) => {
+       if (message.content.startsWith("_vc")) {
+                   if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
+               let args = message.content.split(" ").slice(1);
+           message.guild.createChannel(args.join(' '), 'voice');
+           message.channel.sendMessage('تـم إنـشاء روم صـوتي')
+
+       }
+       });
+
+       client.on("message", (message) => {
+       if (message.content.startsWith("_tc")) {
+                   if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
+               let args = message.content.split(" ").slice(1);
+           message.guild.createChannel(args.join(' '), 'text');
+       message.channel.sendMessage('تـم إنـشاء روم كـتابـي')
+
+       }
+       });
+
+       client.on("message", (message) => {
+         if (message.content.startsWith('_delet')) {
+             if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
+
+             let args = message.content.split(' ').slice(1);
+             let channel = message.client.channels.find('name', args.join(' '));
+             if (!channel) return message.reply('**There is no room like this name -_-**').catch(console.error);
+             channel.delete()
+         }
+     });
+
+client.on("ready", () => {
+
+    var guild;
+
+    while (!guild)
+
+        guild = client.guilds.get("518933084792684544");
+
+    guild.fetchInvites().then((data) => {
+
+        data.forEach((Invite, key, map) => {
+
+            var Inv = Invite.code;
+
+            dat[Inv] = Invite.uses;
+
+        });
+
+    });
+
+});
+
+ 
+
+ 
+
+ 
+
+client.on("guildMemberAdd", (member) => {
+
+    let channel = member.guild.channels.get("520013090562244619");
+
+    if (!channel) {
+
+        console.log("!the channel id it's not correct");
+
+        return;
+
+    }
+
+    if (member.id == client.user.id) {
+
+        return;
+
+    }
+
+    console.log('-');
+
+    var guild;
+
+    while (!guild)
+
+        guild = client.guilds.get("518933084792684544");
+
+    guild.fetchInvites().then((data) => {
+
+        data.forEach((Invite, key, map) => {
+
+            var Inv = Invite.code;
+
+            if (dat[Inv])
+
+                if (dat[Inv] < Invite.uses) {
+
+ channel.send(`تم دعوته بواسطة  ${Invite.inviter} `) ;        
+
+ }
+
+            dat[Inv] = Invite.uses;
+
+       
+
+       });
+
+    });
+
+});
+client.on('guildMemberAdd', (member) => {
+member.addRole(member.guild.roles.find('name', '⇝ℊℯℯ⇜'));  
+});
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
