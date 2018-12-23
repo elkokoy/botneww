@@ -2384,7 +2384,7 @@ member.addRole(member.guild.roles.find('name', '⇝ℊℯℯ⇜'));
 client.on('message', message => {
     if(!message.channel.guild) return;
        if(message.content.startsWith(prefix + 'active')) {
-        let modlog = client.channels.find('name', 'الـــــــــشات_العام');
+        let modlog = client.channels.find('name', 'الشات');
        if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
        message.channel.sendMessage(`اضغط على الصح عشان تتفعل`).then(msg => {
 
@@ -2421,7 +2421,7 @@ client.on('message', message => {
 client.on('message', message => {
     if(!message.channel.guild) return;
        if(message.content.startsWith(prefix + 'active-Disco')) {
-        let modlog = client.channels.find('name', 'الـــــــــشات_العام');
+        let modlog = client.channels.find('name', 'الشات');
        if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
        message.channel.sendMessage(`اضغط على الصح عشان تتفعل`).then(msg => {
 
