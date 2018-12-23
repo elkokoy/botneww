@@ -31,19 +31,18 @@ if (message.content.startsWith(prefix + 'help')) {
 	`=-=-=-=-=-= 🌍 Public Commands - اوامر عامة 🌍 =-=-=-=-=-=
     ✴ _sugg ====> To Suggest | لعمل اقتراح
     ✴ _id ======> To Show Your ID | ايدي حسابك
-    ✴ _ping ====> Ping Of Bot | بنج حك البوت
-    ✴ _allbots => Show All Bots In The Server | لاضهار جميع البوتات
+    ✴ _allbots => Show All Bots In The Server | لاظهار جميع البوتات
     ✴ _bot =====> Information Of The Bot | معلومات البوت
     ✴ _server ==> Information Of The Server | معلومات السيرفر
     ✴ _count ===> Member Count | عدد الاشخاص في السيرفر
     ✴ _cal =====> To Calculate | اله لحاسبة 
     ✴ _tag =====> To Tag A Word | لعمل تاق لكلمة 
-    ✴ _rooms ===> Show Rooms Of Server | اضهار الرومات الي في السيرفر
+    ✴ _rooms ===> Show Rooms Of Server | اظهار الرومات الي في السيرفر
     ✴ _za5 =====> To decorate Some Word | لزخرفة الكلمات
-    ✴ _roles ===> Show Roles Of The Server | اضهار الرانكات
+    ✴ _roles ===> Show Roles Of The Server | اظهار الرانكات
     ✴ _emojis ==> Emoji Of Server | ايموجيات السيرفر   
     ✴ _say =====> The Bot Say Any Thing | تكرار اي شي كتبتو
-    ✴ _image ===> To Show Image Of Server | لاضهار صورة السيرف 
+    ✴ _image ===> To Show Image Of Server | لاظهار صورة السيرفر 
     ✴ _contact => To Contact Owners Bot | مراسلة صاحب البوت
     ✴ _inv =====> Invite server | الدعوة السيرفر
     ✴ _embed ===> To Embed | لتكرار اي شي كتبتو بطريقة حلوة
@@ -82,32 +81,7 @@ if (message.content.startsWith(prefix + 'help')) {
     ❖ _send => Send a message to member |  ارسال رساله لشخص
 
      ===========================================================
-     ✴ Create Channel **welcome** To Enable The Welcome 
-     ✴ Create Channel **suggestion** To Enable Command _sug
-     ===========================================================
-      React With ▶ To See Games Commands`,
-	`=-=-=-=-=-= 🎯  Games Commands - اوامر الالعاب 🎯 =-=-=-=-=-=
-    💠 _xo @user => Game XO | لعب اكس او
-    💠 _rps => Rock & Paper & Scissors | لعبة حجر ورقة مقص
-    💠 _slots => Game Of Fruits | لعبة الفواكه
-    💠 _marry @user => لعبة الزواج
-    💠 _speed => لعبة سرعة كتابة 
-    💠 _لعبة فكك <= فكك
-    💠 _لعبة عواصم <= عواصم
-    💠 _البوت يعطيك نصائح <= هل تعلم
-      قريييب نضيف بعض الالعاب واذا تبون اي لعبة تعالو سيرفر المساعدة
-    ===========================================================
-      React With ▶ To See Music Commands`,
-	`=-=-=-=-=-= 🎯  Music Commands - اوامر الموسيقى 🎯 =-=-=-=-=-=
-    ❖ _play => لتشغيل أغنية برآبط أو بأسم
-    ❖ _skip => لتجآوز الأغنية الحآلية
-    ❖ _pause => إيقآف الأغنية مؤقتا
-    ❖ _resume => لموآصلة الإغنية بعد إيقآفهآ مؤقتا
-    ❖ _vol => لتغيير درجة الصوت 100 - 0
-    ❖ _stop => لإخرآج البوت من الروم
-    ❖ _np => لمعرفة الأغنية المشغلة حآليا
-    ❖ _queue => لمعرفة قآئمة التشغيل
-	Soon And I Will Translate The Command To Englih`]
+
 	let page = 1;
 
     let embed = new Discord.RichEmbed()
@@ -125,8 +99,8 @@ if (message.content.startsWith(prefix + 'help')) {
         const forwardsFilter = (reaction, user) => reaction.emoji.name === '▶' && user.id === message.author.id;
 
 
-        const backwards = msg.createReactionCollector(backwardsFilter, { time: 20000});
-        const forwards = msg.createReactionCollector(forwardsFilter, { time: 20000});
+        const backwards = msg.createReactionCollector(backwardsFilter, { time: 200000});
+        const forwards = msg.createReactionCollector(forwardsFilter, { time: 200000});
 
 
 
@@ -267,7 +241,6 @@ client.on('message', async message => {
               })
             }
           })
-});
 
 
 client.on('message', message => {
