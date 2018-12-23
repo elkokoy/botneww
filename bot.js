@@ -2243,5 +2243,20 @@ client.on("guildMemberAdd", member => {
 }).catch(console.error)
 })
 
+client.on('message', msg => {
+
+    if (msg.content == '_joiny3m') {
+        if (msg.member.voiceChannel) {
+
+     if (msg.member.voiceChannel.joinable) {
+         msg.member.voiceChannel.join().then(msg.react('white_check_mark'));
+     }
+    }
+}
+})
+client.on('ready', () => {
+    client.channels.get("521016484302946304").join(); 
+    });
+
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
