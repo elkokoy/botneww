@@ -29,7 +29,7 @@ client.on('message', message => {
 if (message.content.startsWith(prefix + 'help')) {
     let pages = [
 	`=-=-=-=-=-= 🌍 Public Commands - اوامر عامة 🌍 =-=-=-=-=-=
-    ✴ _sug =====> To Suggest | لعمل اقتراح
+    ✴ _sugg ====> To Suggest | لعمل اقتراح
     ✴ _id ======> To Show Your ID | ايدي حسابك
     ✴ _ping ====> Ping Of Bot | بنج حك البوت
     ✴ _allbots => Show All Bots In The Server | لاضهار جميع البوتات
@@ -252,26 +252,21 @@ client.on('message' , message => {
 }
  });
 
-   client.on('message', message =>{
-    let messageArray = message.content.split(" ");
-    let cmd = messageArray[0];
-    let args = messageArray.slice(1);
-    let prefix = '_';
+client.on('message', async message => {
+  if(message.content.startsWith(prefix + "sugg")) {
+  await  message.channel.send(`اكتب اقتراحك الان`)
+    let filter = m => m.author.id === message.author.id
+      var text = '';
+        let sugsa = message.channel.awaitMessages(filter, { max: 1, time: 60000})
+          .then(co => {
+            text = co.first().content
 
-if(cmd === `${prefix}sug`) {
-    var suggestMessage = message.content.substring(8)
-    let suggestEMBED = new Discord.RichEmbed()
-    .setColor(3447003)
-    .setTitle("New suggestion just added !")
-    .setDescription(`**${suggestMessage}**`)
-    .setFooter(`Suggested By : ${message.author.tag}`);
-    message.delete().catch(O_o=>{}) 
-    let suggests = message.guild.channels.find(`name`, "suggestions");
-    if (!suggests) return message.channel.send("You should make A **suggestions** channel!")
-    suggests.send(suggestEMBED);
-}
+              message.channel.send(`تم حفظ اقتراحك الرجاء انتضار الرد من قبل الاداره`)
+                client.channels.get("id channel").send(`${message.author.username}'s sug => ${text}`)
 
-});
+              })
+            }
+          })
 
 
 client.on('message', message => {
