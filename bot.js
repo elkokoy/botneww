@@ -45,7 +45,7 @@ if (message.content.startsWith(prefix + 'help')) {
     ✴ _say =====> The Bot Say Any Thing | تكرار اي شي كتبتو
     ✴ _image ===> To Show Image Of Server | لاضهار صورة السيرف 
     ✴ _contact => To Contact Owners Bot | مراسلة صاحب البوت
-    ✴ _invite \ _inv => Invite Bot | لدعوة البوت
+    ✴ _invite  => Invite server | الدعوة السيرفر
     ✴ _embed ===> To Embed | لتكرار اي شي كتبتو بطريقة حلوة
     ✴ _avatar ==> Your Avatar | صورتك الشخصية
     ✴ _support => Server Support | سيرفر الدعم الفني
@@ -1959,28 +1959,28 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-        if (message.content === "_invite") {
-            if(!message.channel.guild) return;
-        let embed = new Discord.RichEmbed()
-        .setAuthor(` ${message.author.username} `, message.author.avatarURL)      
-        .setTitle(`➡ Click Here `)
-        .setURL(`https://discordapp.com/oauth2/authorize?client_id=400489866573512705&permissions=8&scope=bot`)
-        .setThumbnail(" https://cdn.discordapp.com/avatars/377904849783750667/6c76e412f18c142dfd711d05fb363869.png?size=2048")        
-     message.channel.sendEmbed(embed);
-       }
-   });
-   
-   client.on('message', message => {
-        if (message.content === "_inv") {
-            if(!message.channel.guild) return;
-        let embed = new Discord.RichEmbed()
-        .setAuthor(` ${message.author.username} `, message.author.avatarURL)      
-        .setTitle(`➡ Click Here `)
-        .setURL(`https://discordapp.com/oauth2/authorize?client_id=400489866573512705&permissions=8&scope=bot`)
-        .setThumbnail(" https://cdn.discordapp.com/avatars/377904849783750667/6c76e412f18c142dfd711d05fb363869.png?size=2048")        
-     message.channel.sendEmbed(embed);
-       }
-   });
+    if (message.content.startsWith(prefix + "invite")) {
+     if(!message.channel.guild) return;
+if (message.author.bot) return;
+        message.channel.createInvite({
+        thing: true,
+        maxUses: 2,
+        maxAge: 86400
+    }).then(invite =>
+      message.author.sendMessage(invite.url)
+    )
+    const Embed11 = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setDescription("تم ارسالك في الخاص")
+         .setFooter("Thieves ",'https://cdn.discordapp.com/attachments/511235124940242944/511583794105548812/22.png')
+                   .setTimestamp()
+				message.channel.send('**تم الارسال في الخاص**');
+
+
+      message.channel.sendEmbed(Embed11).then(message => {message.delete(3000)})
+      message.author.sendEmbed(Embed11)
+    }
+});
  
 client.on('message', message => {
     if (message.content.startsWith("_avatar")) {
@@ -2372,8 +2372,37 @@ client.on("guildMemberAdd", (member) => {
     });
 
 });
+
 client.on('guildMemberAdd', (member) => {
 member.addRole(member.guild.roles.find('name', '⇝ℊℯℯ⇜'));  
 });
+client.on('message', message => {
+    if(!message.channel.guild) return;
+       if(message.content.startsWith(prefix + 'activegamer')) {
+        let modlog = client.channels.find('name', '✲-commands');
+       if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
+       message.channel.sendMessage(`اضغط على الصح عشان تتفعل`).then(msg => {
+
+
+        msg.react('✅')
+       .then(() => msg.react('✅'))
+
+
+
+       let activeFilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+
+       let active = msg.createReactionCollector(activeFilter, { time: 15000 });
+
+
+                               active.on("collect", r => {
+                                   message.member.addRole(message.guild.roles.find("name", "⇝gαмєr⇜"));
+                                   message.member.removeRole(message.guild.roles.find("name", "⇝ℊℯℯ⇜"));
+                                   msg.delete();
+                                   message.channel.send(`**تم تفعيلك استمتع.**`).then(m => m.delete(1000));
+
+                                   })
+                                   })
+                                   }
+                                   });
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
