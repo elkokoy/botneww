@@ -29,7 +29,7 @@ client.on('message', message => {
 if (message.content.startsWith(prefix + 'help')) {
     let pages = [
 	`=-=-=-=-=-= 🌍 Public Commands - اوامر عامة 🌍 =-=-=-=-=-=
-     ✴ _sug =====> To Suggest | لعمل اقتراح
+    ✴ _sug =====> To Suggest | لعمل اقتراح
     ✴ _id ======> To Show Your ID | ايدي حسابك
     ✴ _ping ====> Ping Of Bot | بنج حك البوت
     ✴ _allbots => Show All Bots In The Server | لاضهار جميع البوتات
@@ -45,7 +45,7 @@ if (message.content.startsWith(prefix + 'help')) {
     ✴ _say =====> The Bot Say Any Thing | تكرار اي شي كتبتو
     ✴ _image ===> To Show Image Of Server | لاضهار صورة السيرف 
     ✴ _contact => To Contact Owners Bot | مراسلة صاحب البوت
-    ✴ _invite  => Invite server | الدعوة السيرفر
+    ✴ _inv =====> Invite server | الدعوة السيرفر
     ✴ _embed ===> To Embed | لتكرار اي شي كتبتو بطريقة حلوة
     ✴ _avatar ==> Your Avatar | صورتك الشخصية
     ✴ _support => Server Support | سيرفر الدعم الفني
