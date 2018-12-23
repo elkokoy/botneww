@@ -81,6 +81,11 @@ if (message.content.startsWith(prefix + 'help')) {
     ❖ _send => Send a message to member |  ارسال رساله لشخص
 
      ===========================================================
+      React With  To See Games Commands`,
+
+    ===========================================================
+      React With To See Music Commands`,
+
 
 	let page = 1;
 
