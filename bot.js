@@ -2308,5 +2308,13 @@ client.on('guildMemberAdd', (member) => {
 member.addRole(member.guild.roles.find('name', '⇝ℊℯℯ⇜'));  
 });
 
+client.on("guildMemberAdd", member => {
+  member.createDM().then(function (channel) {
+  return channel.send(`:rose: Welcome in geeky server ... go to join to event now :rose: 
+:crown:اسم العضو  ${member}:crown:  
+انت العضو رقم ${member.guild.memberCount} `) 
+}).catch(console.error)
+})
+
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
