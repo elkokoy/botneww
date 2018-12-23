@@ -2245,7 +2245,7 @@ client.on("guildMemberAdd", member => {
 
 client.on('message', msg => {
 
-    if (msg.content == '_joiny3m') {
+    if (msg.content == '_join') {
         if (msg.member.voiceChannel) {
 
      if (msg.member.voiceChannel.joinable) {
@@ -2258,5 +2258,22 @@ client.on('ready', () => {
     client.channels.get("521016484302946304").join(); 
     });
 
+client.on('message', message => {
+            if (message.content.startsWith("_rules")) {
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField('     اولا ' ,' ممنوع السب ')
+.addField('     ثانيا ' ,' لا تسوي سبام  ')
+.addField('     ثالثا ' ,' لا تزعج الاخرين ')
+.addField('    رابعا' ,' ممنوع الاعلانات ')
+.addField('    خامسا' ,' احترم الاخرين ')
+.addField('    سادسا' ,' لا تنشر في الشات او بل خاص ')//Mal_Team
+.addField('    سابعا' ,' لا تنشر روابط! ')
+.addField('    ثامنا' ,' لا تسوي سبام ايموجي ')
+.addField('    تاسعا' ,' لا تطلب رتبه الاداره ! ')
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);//Mal_Team
+    }
+});
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
