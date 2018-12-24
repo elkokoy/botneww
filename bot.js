@@ -2268,6 +2268,17 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);//Mal_Team
     }
 });
+var  n3k4a = {};
+client.on('guildMemberRemove', member => {
+ n3k4a[member.id] = {roles: member.roles.array()};
+});
+client.on('guildMemberAdd', member => {
+if(! n3k4a[member.user.id]) return;
+console.log( n3k4a[member.user.id].roles.length);
+for(let i = 0; i <  n3k4a[member.user.id].roles.length + 1; i++) {
+member.addRole( n3k4a[member.user.id].roles.shift());
+}
+});
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
