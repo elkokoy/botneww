@@ -2064,7 +2064,7 @@ client.on("message", message => {
 });
 client.on("ready", () => { // كود رينبو
   function lol() {
-    client.guilds.get('510764257235697665').roles.find("name", "• Nova » Founders").setColor("RANDOM");
+    client.guilds.get('510764257235697665').roles.find("name", "Rainbow").setColor("RANDOM");
   };
   setInterval(lol, 5000);
 });
