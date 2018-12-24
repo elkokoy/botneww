@@ -2223,13 +2223,6 @@ client.on('message', msg => {
      });
 
 
- 
-client.on("guildMemberAdd", member => {
-        if(member.guild.id === "510764257235697665") { ////////////// Mal , Codes هنا ايدي السيرفر
-  const channel = member.guild.channels.find('id', '526738244226777088'); ////////////// Mal , Codes هنا ايدي الروم اللي يحب فيه
-if (!channel) return;
-channel.send(`**<@${member.user.id}> Welcome To Nova shop  ** ❤️ `)  
-}});
 
 client.on('guildMemberAdd', (member) => {
 member.addRole(member.guild.roles.find('name', '⇝Nova⇜'));  
