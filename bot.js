@@ -2143,23 +2143,30 @@ client.on("message", (message) => {
                             client.users.get("351366504068939777").send(yumz)
                         }
             });
-client.on('ready', function(){
-    var ms = 10000 ;
-    var setGame = [`♥ Nova Shop ♥ `,` Love you all ♥ `];
-    var i = -1;
-    var j = 0;
-    setInterval(function (){
-        if( i == -1 ){
-            j = 1;
-        }
-        if( i == (setGame.length)-1 ){
-            j = -1;
-        }
-        i = i+j;
-        client.user.setGame(setGame[i],`http://www.twitch.tv/حبي احبك في الله`);
-    }, ms);10000
-	});
-
+const adminprefix = "c9";
+const devs = ['523644231965737000'];
+client.on('message', message => {
+  var argresult = message.content.split(`).slice(1).join(' ');
+    if (!devs.includes(message.author.id)) return;
+    
+if (message.content.startsWith(adminprefix + 'setG')) {
+  client.user.setGame(argresult);
+    message.channel.sendMessage(${argresult} تم تغيير بلاينق البوت إلى )
+} else 
+  if (message.content.startsWith(adminprefix + 'setN')) {
+client.user.setUsername(argresult).then
+    message.channel.sendMessage(${argresult} : تم تغيير أسم البوت إلى)
+return message.reply("**لا يمكنك تغيير الاسم يجب عليك الانتظآر لمدة ساعتين . **");
+} else
+  if (message.content.startsWith(adminprefix + 'setA')) {
+client.user.setAvatar(argresult);
+  message.channel.sendMessage(${argresult} : تم تغير صورة البوت);
+      } else     
+if (message.content.startsWith(adminprefix + 'setT')) {
+  client.user.setGame(argresult, "https://www.twitch.tv/idk");
+    message.channel.sendMessage(تم تغيير تويتش البوت إلى  ${argresult}`)
+}
+});
 client.on('message', message => {
     var p = "_";
             if (message.content.startsWith(p + "cto")) {
