@@ -369,7 +369,7 @@ client.on('guildCreate', guild => {
      .setTitle('Click Here To Add Bot .!')
      .setURL('https://discordapp.com/oauth2/authorize?client_id=400489866573512705&permissions=8&scope=bot')
   .setDescription(`**
-  New Server Add ℊℯℯ𝖪𝒴 System ✅
+  New Server Add Nova Shop ✅
 Server name: __${guild.name}__
 Server owner: __${guild.owner}__
 Server id: __${guild.id}__ 
@@ -383,7 +383,7 @@ client.on('guildDelete', guild => {
      .setTitle('Click Here To Add Bot .!')
      .setURL('https://discordapp.com/oauth2/authorize?client_id=400489866573512705&permissions=8&scope=bot')
   .setDescription(`**
-   Server kicked ℊℯℯ𝖪𝒴 System :cry:
+   Server kicked Nova Shop :cry:
 Server name: __${guild.name}__
 Server owner: __${guild.owner}__
 Server id: __${guild.id}__ 
@@ -439,7 +439,7 @@ client.on('message', async msg => {
 			        .setDescription(`**الرجاء اختيار رقم المقطع** :
 ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 
-					.setFooter("ℊℯℯ𝖪𝒴 System")
+					.setFooter("Nova Shop")
 					msg.channel.sendEmbed(embed1).then(message =>{message.delete(20000)})
 					
 					try {
@@ -724,7 +724,7 @@ client.on('message', message => {
             .setAuthor(client.user.username,client.user.avatarURL)
             .setThumbnail(client.user.avatarURL)
             .setColor('RANDOM')
-            .setTitle('``INFO ℊℯℯ𝖪𝒴 System`` ')
+            .setTitle('``INFO Nova Shop`` ')
             .addField('``My Ping``' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true)
             .addField('``RAM Usage``', `[${(process.memoryUsage().rss / 1048576).toFixed()}MB]`, true)
             .addField('``servers``', [client.guilds.size], true)
@@ -848,7 +848,7 @@ if(!args[0]) return message.reply('Write Some Things');
     if(!message.channel.guild) return message.channel.send('**This Command Only For Servers**').then(m => m.delete(5000));
   if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**You Dont Have perms** `ADMINISTRATOR`' );
     let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
-    let copy = "ℊℯℯ𝖪𝒴 System";
+    let copy = "Nova Shop";
     let request = `Requested By ${message.author.username}`;
     if (!args) return message.reply('**Write Some Things To Broadcast**');message.channel.send(`**Are You Sure \nThe Broadcast: ** \` ${args}\``).then(msg => {
     msg.react('✅')
@@ -1740,7 +1740,7 @@ let embed = new Discord.RichEmbed()
      .setAuthor(message.author.username, message.author.avatarURL)
      .setDescription(':mailbox_with_mail: Succes The Message Has Been Sent To The Owners')
      .setThumbnail(message.author.avatarURL)
-     .setFooter("ℊℯℯ𝖪𝒴 System")
+     .setFooter("Nova Shop")
                                                 
 
 message.channel.send(embed);
@@ -2064,7 +2064,7 @@ client.on("message", message => {
 });
 client.on("ready", () => { // كود رينبو
   function lol() {
-    client.guilds.get('518933084792684544').roles.find("name", "{}").setColor("RANDOM");
+    client.guilds.get('510764257235697665').roles.find("name", "Owner").setColor("RANDOM");
   };
   setInterval(lol, 1000);
 });
@@ -2074,7 +2074,7 @@ client.on("ready", () => {
 
     while (!guild)
 
-        guild = client.guilds.get("518933084792684544");
+        guild = client.guilds.get("510764257235697665");
 
     guild.fetchInvites().then((data) => {
 
@@ -2145,7 +2145,7 @@ client.on("message", (message) => {
             });
 client.on('ready', function(){
     var ms = 10000 ;
-    var setGame = [`♥ℊℯℯ𝖪𝒴 Server♥ `,` _help `];
+    var setGame = [`♥ Nova Shop ♥ `,` Love you all ♥ `];
     var i = -1;
     var j = 0;
     setInterval(function (){
@@ -2225,19 +2225,19 @@ client.on('message', msg => {
 
  
 client.on("guildMemberAdd", member => {
-        if(member.guild.id === "518933084792684544") { ////////////// Mal , Codes هنا ايدي السيرفر
-  const channel = member.guild.channels.find('id', '520013090562244619'); ////////////// Mal , Codes هنا ايدي الروم اللي يحب فيه
+        if(member.guild.id === "510764257235697665") { ////////////// Mal , Codes هنا ايدي السيرفر
+  const channel = member.guild.channels.find('id', '526738244226777088'); ////////////// Mal , Codes هنا ايدي الروم اللي يحب فيه
 if (!channel) return;
-channel.send(`**<@${member.user.id}> Welcome To ℊℯℯ𝖪𝒴 server ** ❤️ `)  
+channel.send(`**<@${member.user.id}> Welcome To Nova shop  ** ❤️ `)  
 }});
 
 client.on('guildMemberAdd', (member) => {
-member.addRole(member.guild.roles.find('name', '⇝ℊℯℯ⇜'));  
+member.addRole(member.guild.roles.find('name', '⇝Nova⇜'));  
 });
 
 client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
-  return channel.send(`:rose: Welcome in geeky server ... go to join to event now :rose: 
+  return channel.send(`:rose: Welcome in Nova shop  :rose: 
 :crown:اسم العضو  ${member}:crown:  
 انت العضو رقم ${member.guild.memberCount} `) 
 }).catch(console.error)
