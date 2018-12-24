@@ -2225,7 +2225,7 @@ client.on('message', msg => {
 
 
 client.on('guildMemberAdd', (member) => {
-member.addRole(member.guild.roles.find('name', '⇝Nova⇜'));  
+member.addRole(member.guild.roles.find('name', '• Nova » Members'));  
 });
 
 client.on("guildMemberAdd", member => {
