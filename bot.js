@@ -2275,32 +2275,6 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);//Mal_Team
     }
 });
-client.on('message', message => {
-    if (message.content === "_serooms") {
-    if(!message.channel.guild) return message.channel.send('This Command Only For Servers !')
 
-     message.guild.createChannel('Owner', 'voice')
-     message.guild.createChannel('logss', 'voice')
-     message.guild.createChannel('Public ❤', 'voice')
-     message.guild.createChannel('Public ✿', 'voice')
-     message.guild.createChannel('Public ★', 'voice')
-     message.guild.createChannel('ℳ𝒰𝒮ℐ𝒞 I', 'voice')
-     message.guild.createChannel('ℳ𝒰𝒮ℐ𝒞 II', 'voice')
-     message.guild.createChannel('ℳ𝒰𝒮ℐ𝒞 III', 'voice')
-     message.guild.createChannel('✌𝐃𝐔𝐎✌', 'voice')
-     message.guild.createChannel('☼𝐓𝐑𝐈𝐏𝐋𝐄☼', 'voice')
-     message.guild.createChannel('✿𝐒𝐐𝐔𝐀𝐃✿', 'voice')
-     message.guild.createChannel('☮𝐅𝐈𝐑𝐄𝐓𝐄𝐀𝐌☮', 'voice')
-     message.guild.createChannel('اوضه فيها ناس نايمين', 'voice')
-     message.guild.createChannel('welcome', 'text')
-     message.guild.createChannel('✲-great-chat', 'text')
-     message.guild.createChannel('✲-commands', 'text')
-     message.guild.createChannel('✲-invite-rewards', 'text')
-     message.guild.createChannel('ℳ𝒰𝒮ℐ𝒞-♬', 'text')
-
-
-message.channel.sendMessage('الرجاء الانتظار ريث ما يتم صناعة السيرفر')
-}
-});
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
