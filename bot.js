@@ -2143,8 +2143,8 @@ client.on("message", (message) => {
                             client.users.get("351366504068939777").send(yumz)
                         }
             });
-const devs = ['523644231965737000'];
 client.on('message', message => {
+    var p = "_";
   var argresult = message.content.split(`).slice(1).join(' ');
     if (!devs.includes(message.author.id)) return;
     
