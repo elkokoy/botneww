@@ -2143,7 +2143,6 @@ client.on("message", (message) => {
                             client.users.get("351366504068939777").send(yumz)
                         }
             });
-const adminprefix = "_";
 const devs = ['523644231965737000'];
 client.on('message', message => {
   var argresult = message.content.split(`).slice(1).join(' ');
