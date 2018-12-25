@@ -2300,6 +2300,21 @@ reaction2.on("collect", r => {
 })
 }
 });
+client.on('ready', function(){
+    var ms = 10000 ;
+    var setGame = ['♥ ℕova server ♥ ','Love you all' ];
+    var i = -1;
+    var j = 0;
+    setInterval(function (){
+        if( i == -1 ){
+            j = 1;
+        }
+        if( i == (setGame.length)-1 ){
+            j = -1;
+        }
+        i = i+j;
+        client.user.setGame(setGame[i],`https://www.twitch.tv/ℕ o v a server ♥`);
+    }, ms);
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
