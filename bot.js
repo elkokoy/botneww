@@ -2358,10 +2358,7 @@ client.on("message", (message) => {
            });
    }
  
-});
-client.on('ready', () => {
-client.user.setGame(``,'https://www.twitch.tv/N o v a Serverr');
-client.user.setGame(`♥- ℕova -♥`,'https://www.twitch.tv/N o v a Serverr');
+
 });
 
 // THIS  MUST  BE  THIS  WAY
