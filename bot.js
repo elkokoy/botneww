@@ -2065,6 +2065,7 @@ client.on("message", message => {
 client.on("ready", () => { // كود رينبو
   function lol() {
     client.guilds.get('510764257235697665').roles.find("name", "Rainbow").setColor("RANDOM");
+    client.guilds.get('518933084792684544').roles.find("name", "{}").setColor("RANDOM");
   };
   setInterval(lol, 5000);
 });
@@ -2210,6 +2211,9 @@ client.on('message', msg => {
 
 client.on('guildMemberAdd', (member) => {
 member.addRole(member.guild.roles.find('name', '• Nova » Members'));  
+});
+client.on('guildMemberAdd', (member) => {
+member.addRole(member.guild.roles.find('name', '⇝ℕov⇜'));  
 });
 
 client.on("guildMemberAdd", member => {
