@@ -2315,6 +2315,7 @@ client.on('ready', function(){
         i = i+j;
         client.user.setGame(setGame[i],`https://www.twitch.tv/ℕ o v a server ♥`);
     }, ms);
+	});
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
