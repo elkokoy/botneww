@@ -2359,6 +2359,9 @@ client.on("message", (message) => {
  
 
 });
+client.on('ready', () => {                           
+client.user.setGame(`♥ ℕova server ♥`,'https://www.twitch.tv/ℕ o v a Shop♥');
+  });
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
