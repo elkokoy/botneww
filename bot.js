@@ -840,50 +840,31 @@ if(!args[0]) return message.reply('Write Some Things');
 });
 
 
-
- client.on('message', message => {
-	    var prefix = "_";
-              if(!message.channel.guild) return;
-    if(message.content.startsWith(prefix + 'bc')) {
-    if(!message.channel.guild) return message.channel.send('**This Command Only For Servers**').then(m => m.delete(5000));
-  if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**You Dont Have perms** `ADMINISTRATOR`' );
-    let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
-    let copy = "Nova Shop";
-    let request = `Requested By ${message.author.username}`;
-    if (!args) return message.reply('**Write Some Things To Broadcast**');message.channel.send(`**Are You Sure \nThe Broadcast: ** \` ${args}\``).then(msg => {
-    msg.react('✅')
-    .then(() => msg.react('❌'))
-    .then(() =>msg.react('✅'))
-    
-    let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
-    let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
-    
-    let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
-    let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
- reaction1.on("collect", r => {
-    message.channel.send(`**☑ | Done ... The Broadcast Message Has Been Sent To __${message.guild.members.size}__ Members**`).then(m => m.delete(5000));
-    message.guild.members.forEach(m => {
-  
-  var bc = new
-       Discord.RichEmbed()
-       .setColor('RANDOM')
-       .setTitle('Broadcast')
-       .addField('Server', message.guild.name)
-       .addField('Sender', message.author.username)
-       .addField('Message', args)
-       .setThumbnail(message.author.avatarURL)
-       .setFooter(copy, client.user.avatarURL);
-    m.send({ embed: bc })
-    msg.delete();
-    })
-    })
-    reaction2.on("collect", r => {
-    message.channel.send(`**Broadcast Canceled.**`).then(m => m.delete(5000));
-    msg.delete();
-    })
-    })
-    }
+client.on('message',async message => {//Toxic Code
+  if(message.author.bot || message.channel.type === '_bc') return;
+  let args = message.content.split(' ');
+  if(args[0] === `_bc`) {//Toxic Code
+    if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send('- **أنت لا تملك الصلاحيات اللازمة لأستخدام هذا الأمر**');
+    if(!args[1]) return message.channel.send('- **يجب عليك كتابة الرسالة بعد الأمر**');
+ 
+    let msgCount = 0;
+    let errorCount = 0;
+    let successCount = 0;
+    message.channel.send(`**- [ :bookmark: :: ${msgCount} ] ・عدد الرسائل المرسلة**\n**- [ :inbox_tray: :: ${successCount} ] ・عدد الرسائل المستلمة**\n**- [ :outbox_tray: :: ${errorCount} ]・عدد الرسائل الغير مستلمة**`).then(msg => {//Toxic Code
+      message.guild.members.forEach(g => {//Toxic Code
+        g.send(args.slice(1).join(' ')).then(() => {//Toxic Code
+          successCount++;
+          msgCount++;
+          msg.edit(`**- [ :bookmark: :: ${msgCount} ] ・عدد الرسائل المرسلة**\n**- [ :inbox_tray: :: ${successCount} ] ・عدد الرسائل المستلمة**\n**- [ :outbox_tray: :: ${errorCount} ]・عدد الرسائل الغير مستلمة**`);
+        }).catch(e => {
+          errorCount++;
+          msgCount++;
+          msg.edit(`**- [ :bookmark: :: ${msgCount} ] ・عدد الرسائل المرسلة**\n**- [ :inbox_tray: :: ${successCount} ] ・عدد الرسائل المستلمة**\n**- [ :outbox_tray: :: ${errorCount} ]・عدد الرسائل الغير مستلمة**`);//Toxic Code
+        });
+      });
     });
+  }
+});
 
 let points = {};
 const type = [
