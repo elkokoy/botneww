@@ -2286,7 +2286,7 @@ reaction2.on("collect", r => {
 });
 client.on("message", (message) => {
     /// DREAM
-   if (message.content.startsWith("-new")) {     /// DREAM
+   if (message.content.startsWith("_new")) {     /// DREAM
         const reason = message.content.split(" ").slice(1).join(" ");     /// DREAM
         if (!message.guild.roles.exists("name", "• Nova » Support Team")) return message.channel.send(`لازم تسوي رتبة اسمها \`• Nova » Support Team\` وتنطي البوت ادمنيتر حتا يقدر يسوي الرومات ويعدل برمشنات`);
         if (message.guild.channels.exists("name", "ticket-{message.author.id}" + message.author.id)) return message.channel.send(`You already have a ticket open.`);    /// ALPHA CODES
